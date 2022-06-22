@@ -34,7 +34,7 @@ class TTOBSI_Matrix33n {
                                       const TTOBSI_Matrix33n &mA);
 
     friend TTOBSI_Matrix33n operator*(const TTOBSI_Matrix33n &mB, TTOBSI_Num a);
-    
+
     friend TTOBSI_Matrix33n operator*(const TTOBSI_Vector3n &vB,
                                       const TTOBSI_Matrix33n &mA);
 
@@ -77,7 +77,7 @@ class TTOBSI_Matrix22n {
                                       const TTOBSI_Matrix22n &mA);
 
     friend TTOBSI_Matrix22n operator*(const TTOBSI_Matrix22n &mB, TTOBSI_Num a);
-    
+
     friend TTOBSI_Matrix22n operator*(const TTOBSI_Vector2n &vB,
                                       const TTOBSI_Matrix22n &mA);
 
@@ -110,24 +110,53 @@ class TTOBSI_Vector3n {
                                      const TTOBSI_Vector3n &vB);
     friend TTOBSI_Vector3n operator-(const TTOBSI_Vector3n &vA,
                                      const TTOBSI_Vector3n &vB);
-    
+
     // dot product
     friend TTOBSI_Num operator*(const TTOBSI_Vector3n &vA,
-                                     const TTOBSI_Vector3n &vB);
+                                const TTOBSI_Vector3n &vB);
 
     friend TTOBSI_Vector3n operator*(const TTOBSI_Vector3n &vB, TTOBSI_Num a);
-    
+
     friend TTOBSI_Matrix33n operator*(const TTOBSI_Vector3n &vB,
                                       const TTOBSI_Matrix33n &mA);
 
     // its actually difficult to decide what these comparison operator mean
-    friend bool operator==(const TTOBSI_Vector3n &vA, const TTOBSI_Vector3n &vB);
-    
+    friend bool operator==(const TTOBSI_Vector3n &vA,
+                           const TTOBSI_Vector3n &vB);
+
   private:
     TTOBSI_Num v[3];
 };
 
 class TTOBSI_Vector2n {
+  public:
+    TTOBSI_Vector2n();
+    TTOBSI_Vector2n(TTOBSI_Num a[2]);
+    TTOBSI_Vector2n(TTOBSI_Num x, TTOBSI_Num y);
+
+    TTOBSI_Num getSquaredLength();
+    TTOBSI_Num getLength();
+
+    // operator overloads
+    friend TTOBSI_Vector2n operator-(const TTOBSI_Vector2n &vA);
+    friend TTOBSI_Vector2n operator+(const TTOBSI_Vector2n &vA,
+                                     const TTOBSI_Vector2n &vB);
+    friend TTOBSI_Vector2n operator-(const TTOBSI_Vector2n &vA,
+                                     const TTOBSI_Vector2n &vB);
+    // dot product
+    friend TTOBSI_Num operator*(const TTOBSI_Vector2n &vA,
+                                const TTOBSI_Vector2n &vB);
+
+    friend TTOBSI_Vector2n operator*(const TTOBSI_Vector2n &vB, TTOBSI_Num a);
+
+    friend TTOBSI_Matrix22n operator*(const TTOBSI_Vector2n &vB,
+                                      const TTOBSI_Matrix22n &mA);
+
+    // its actually difficult to decide what these comparison operator mean
+    friend bool operator==(const TTOBSI_Vector2n &vA,
+                           const TTOBSI_Vector2n &vB);
+
+
   private:
     TTOBSI_Num v[2];
 };
